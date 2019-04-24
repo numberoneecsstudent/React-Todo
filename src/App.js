@@ -1,6 +1,6 @@
 import React from 'react';
 import Todo from './components/TodoComponents/Todo';
-//import TodoForm from './components/TodoComponents/TodoForm';
+import TodoForm from './components/TodoComponents/TodoForm';
 //import TodoList from './components/TodoComponents/TodoList';
 
 
@@ -38,6 +38,9 @@ render() {
   return ( 
       <div>
         {this.state.toDo.map(x => {return <Todo todo={x} key={this.state.task}/>})}
+        <div>
+          <TodoForm todoform={this.state.toDoElements}/> 
+        </div>
       </div>
     );
   }
