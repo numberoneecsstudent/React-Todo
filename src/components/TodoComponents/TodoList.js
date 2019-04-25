@@ -8,8 +8,8 @@ import Todo from './Todo'
 const TodoList = (props) => {
     return (
         <section>
-            {props.todoList.map(todo => {
-                return <Todo todo={todo} key={props.task}/>
+            {props.toDo.map(todo => {
+                return <Todo todo={todo} key={todo.id} toggleComplete={props.toggleComplete}/>
             })}
         </section>
     )

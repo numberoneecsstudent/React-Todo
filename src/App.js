@@ -1,7 +1,7 @@
 import React from 'react';
 import TodoForm from './components/TodoComponents/TodoForm';
 import TodoList from './components/TodoComponents/TodoList';
-
+import "./components/TodoComponents/Todo.css"
 
 const Test = 
 [
@@ -54,15 +54,30 @@ addTask = event => {
  });
 };
 
+removeCompleted = () => {
+  this.setState({
+    toDo: this.state.toDo.filter(todo => !todo.completed)
+  });
+};
+
+toggleComplete = id => {
+  this.setState({
+    toDo: this.state.toDo.map(todo => 
+      todo.id === id ? {...todo, completed: !todo.completed } : todo
+      )
+  })
+}
+
 render() {
   return ( 
       <div>
         <section>
-          <TodoList todoList={this.state.toDo} />
+          <TodoList toDo={this.state.toDo} toggleComplete={this.toggleComplete} />
         </section>
         <section>
           <TodoForm todoForm={this.state.toDoElements} handleChanges= {this.handleChanges} addTask={this.addTask}/>
         </section>
+        <button onClick={this.removeCompleted}>Clear</button>
       </div>
     );
   }
